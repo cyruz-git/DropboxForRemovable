@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Ciro Principe">
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+        <title>DropboxForRemovable</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="./css/prettify-1.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">DropboxForRemovable</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">README</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/cyruz-git/DropboxForRemovable">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#dropboxforremovable">DropboxForRemovable</a></li>
+        
+            <li><a href="#how-it-works">How it works</a></li>
+        
+            <li><a href="#remarks">Remarks</a></li>
+        
+            <li><a href="#setup-and-usage">Setup and usage</a></li>
+        
+            <li><a href="#configuration-file">Configuration file</a></li>
+        
+            <li><a href="#license">License</a></li>
+        
+            <li><a href="#contact">Contact</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="dropboxforremovable">DropboxForRemovable</h1>
+<p><strong>PLEASE NOTE THAT THIS IS BETA SOFTWARE. I'M IN NO WAY RESPONSIBLE FOR ANY DATA LOSS.</strong></p>
+<p><em>DropboxForRemovable</em> is a small app that will control the <strong>Dropbox</strong> executable according to the presence of a specific <strong>removable drive</strong>. I created it because Dropbox is not friendly when it comes to syncing removable drives. Mounting the removable drive on a NTFS folder or creating a junction to it is possible to enable the sync, but there is still a big problem to face: Dropbox will think that the files have been deleted if the removable drive is suddenly unplugged.</p>
+<p><em>DropboxForRemovable</em> tries to fix this behaviour <strong>freezing</strong> the Dropbox executable when the drive is unplugged, <strong>unfreezing</strong> it when the drive is plugged back again.</p>
+<p>The requirements are:</p>
+<ol>
+<li>
+<p>A local installation of <a href="https://www.dropbox.com/">Dropbox</a>.</p>
+</li>
+<li>
+<p>A removable drive to synchronize with Dropbox.</p>
+</li>
+</ol>
+<h3 id="how-it-works">How it works</h3>
+<p><em>DropboxForRemovable</em> creates a configuration for the existing setup, flagging the desired removable drive (that must be plugged in) as the designated one and setting the tool to run on system access through the <strong>task scheduler</strong>.</p>
+<p>On next run, <em>DropboxForRemovable</em> will start monitoring for drive removal. If the drive is removed, the Dropbox process will be <strong>SUSPENDED</strong> (the app icon will turn red and the Dropbox icon will be hidden). When the drive is plugged back the Dropbox process will be <strong>RESUMED</strong> (the app icon will turn blue and the Dropbox icon will be restored).</p>
+<h3 id="remarks">Remarks</h3>
+<p>Because of the Dropbox client being closed source and not scriptable, this app cannot react to the events in a clean way. In particular, the sync cannot be simply paused/resumed, so the process itself will be suspended/resumed. The Dropbox setup is not changed in any way.</p>
+<p>If the Dropbox executable is not running <em>DropboxForRemovable</em> will start polling the system in a relaxed way (3 seconds) until it is found running again. If Dropbox is stopped and the drive is unplugged during the polling interval, when Dropbox will be catched again it will be suspended. There is indeed a latency, with the polling frequency as the upper limit.</p>
+<h3 id="setup-and-usage">Setup and usage</h3>
+<p><em>DropboxForRemovable</em> assumes that we have a removable drive containing a folder synchronized with Dropbox through a NTFS folder mount. To do this follow this procedure:</p>
+<ol>
+<li>
+<p>Run the <code>diskmgmt.msc</code> console with <code>Win+R</code>.</p>
+</li>
+<li>
+<p>Select the removable drive volume and right click it to select the <strong>"Change Drive Letter and Paths..."</strong> menu.</p>
+</li>
+<li>
+<p>Click on the <strong>Add</strong> button.</p>
+</li>
+<li>
+<p>Select <strong>"Mount in the following empty NTFS folder"</strong> and browse to the desired folder.</p>
+</li>
+<li>
+<p>Acknowledge all the modifications we have done.</p>
+</li>
+<li>
+<p>Sync the desired folder in the <strong>Dropbox Account Preferences</strong>.</p>
+</li>
+</ol>
+<p>Now that we have a working synchronization for our removable drive, we will protect it installing <em>DropboxForRemovable</em>:</p>
+<ol>
+<li>
+<p>Start <em>DropboxForRemovable</em> with Dropbox running and the removable drive plugged in.</p>
+</li>
+<li>
+<p>Select the volume to monitor from the dropdown menu and click <strong>Configure</strong>.</p>
+</li>
+<li>
+<p>A configuration file and the scheduler tasks will be created. A hidden system file flagging the removable drive will be created in its root. <em>DropboxForRemovable</em> will be started.</p>
+</li>
+</ol>
+<p>To uninstall <em>DropboxForRemovable</em>:</p>
+<ol>
+<li>Right click on the <em>DropboxForRemovable</em> tray icon and select <strong>Uninstall</strong>.</li>
+</ol>
+<h3 id="configuration-file">Configuration file</h3>
+<p>The configuration file presence tells to the program if it's installed or not. It contains only the following options:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOLUME_TO_MONITOR</td>
+<td>The drive letter of the volume to monitor.</td>
+</tr>
+<tr>
+<td>DROPBOX_WAIT_TIMER</td>
+<td>The frequency of polling to check for the Dropbox state (in milliseconds, default 3000).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="license">License</h3>
+<p><em>DropboxForRemovable</em> is released under the terms of the <a href="http://www.gnu.org/licenses/">GNU General Public License</a>. The tray icons are part of <a href="https://www.iconfinder.com/iconsets/Keyamoon-IcoMoon--limited">Kayamoon's IcoMoon set</a>, so their hex code is relesead under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC terms</a>. The DropboxForRemovable executable icon is part of <a href="https://www.iconfinder.com/iconsets/perqui">Ampeross's Perqui set</a>.</p>
+<h3 id="contact">Contact</h3>
+<p>For hints, bug reports or anything else, you can contact me at <a href="mailto:focabresm@gmail.com">focabresm@gmail.com</a>, open a issue on the dedicated <a href="https://github.com/cyruz-git/DropboxForRemovable">GitHub repo</a> or use the <a href="http://ahkscript.org/boards/viewtopic.php?f=6&amp;t=1173">AHKscript development thread</a>.</p>
+</div>
+        </div>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/prettify-1.0.min.js"></script>
+        <script src="./js/base.js"></script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+site_name: DropboxForRemovable
+site_author: Ciro Principe
+repo_url: https://github.com/cyruz-git/DropboxForRemovable
+pages:
+- ['index.md', 'README']
+theme: united
