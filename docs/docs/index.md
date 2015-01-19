@@ -63,7 +63,7 @@ DROPBOX_WAIT_TIMER | The frequency of polling to check for the Dropbox state (in
 
 ### License
 
-*DropboxForRemovable* is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/). The tray icons are part of [Kayamoon's IcoMoon set](https://www.iconfinder.com/iconsets/Keyamoon-IcoMoon--limited), so their hex code is relesead under the [CC terms](http://creativecommons.org/licenses/by-sa/3.0/). The DropboxForRemovable executable icon is part of [Ampeross's Perqui set](https://www.iconfinder.com/iconsets/perqui).
+*DropboxForRemovable* is released under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/). The tray icons are part of [Kayamoon's IcoMoon set](https://www.iconfinder.com/iconsets/Keyamoon-IcoMoon--limited), so their hex code is relesead under the [CC terms](http://creativecommons.org/licenses/by-sa/3.0/). The DropboxForRemovable executable icon is part of [Ampeross's Perqui set](https://www.iconfinder.com/iconsets/perqui).
 
 ### Contact
 

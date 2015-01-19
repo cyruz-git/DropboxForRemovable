@@ -35,6 +35,7 @@ Name | Description
 docs\ | Folder containing the documentation, built with MkDocs.
 lib\ | Folder containing the required libraries.
 COPYING | GNU General Public License.
+COPYING.LESSER | GNU Lesser General Public License.
 DropboxForRemovable.ahk | Main and only source file.
 DropboxForRemovable.ico | Icon file.
 README.md | This document.
@@ -55,7 +56,7 @@ The documentation site is built with [MkDocs](http://www.mkdocs.org/).
 
 ### License
 
-*DropboxForRemovable* is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/). The tray icons are part of [Kayamoon's IcoMoon set](https://www.iconfinder.com/iconsets/Keyamoon-IcoMoon--limited), so their hex code is relesead under the [CC terms](http://creativecommons.org/licenses/by-sa/3.0/). The DropboxForRemovable executable icon is part of [Ampeross's Perqui set](https://www.iconfinder.com/iconsets/perqui).
+*DropboxForRemovable* is released under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/). The tray icons are part of [Kayamoon's IcoMoon set](https://www.iconfinder.com/iconsets/Keyamoon-IcoMoon--limited), so their hex code is relesead under the [CC terms](http://creativecommons.org/licenses/by-sa/3.0/). The DropboxForRemovable executable icon is part of [Ampeross's Perqui set](https://www.iconfinder.com/iconsets/perqui).
 
 ### Contact
 
