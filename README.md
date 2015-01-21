@@ -33,16 +33,18 @@ If the Dropbox executable is not running *DropboxForRemovable* will start pollin
 Name | Description
 -----|------------
 docs\ | Folder containing the documentation, built with MkDocs.
-lib\ | Folder containing the required libraries.
 COPYING | GNU General Public License.
 COPYING.LESSER | GNU Lesser General Public License.
 DropboxForRemovable.ahk | Main and only source file.
 DropboxForRemovable.ico | Icon file.
+LibSetup.ahk | Libraries setup script.
 README.md | This document.
 
 ### How to compile
 
 *DropboxForRemovable* should be compiled with the **Ahk2Exe** compiler, that can be downloaded from the [AHKscript download page](http://ahkscript.org/download/).
+
+Run the `LibSetup.ahk` script in advance to retrieve the required libraries from GitHub.
 
 Browse to the files so that the fields are filled as follows:
 
