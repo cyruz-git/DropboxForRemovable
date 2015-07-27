@@ -2,7 +2,7 @@
 
 **PLEASE NOTE THAT THIS IS BETA SOFTWARE. I'M IN NO WAY RESPONSIBLE FOR ANY DATA LOSS.**
 
-*DropboxForRemovable* is a small app that will control the **Dropbox** executable according to the presence of a specific **removable drive**. I created it because Dropbox is not friendly when it comes to syncing removable drives. Mounting the removable drive on a NTFS folder or creating a junction to it is possible to enable the sync, but there is still a big problem to face: Dropbox will think that the files have been deleted if the removable drive is suddenly unplugged.
+*DropboxForRemovable* is a small app that controls the **Dropbox** executable according to the presence of a specific **removable drive**. I created it because Dropbox is not friendly when it comes to syncing removable drives. Mounting the removable drive on a NTFS folder or creating a junction to it is possible to enable the sync, but there is still a big problem to face: Dropbox will think that the files have been deleted if the removable drive is suddenly unplugged.
 
 *DropboxForRemovable* tries to fix this behaviour **freezing** the Dropbox executable when the drive is unplugged, **unfreezing** it when the drive is plugged back again.
 
