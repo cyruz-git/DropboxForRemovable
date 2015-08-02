@@ -3,7 +3,7 @@
 ; Description ..: Dropbox helper that controls the process according to the presence of a specific removable drive.
 ; AHK Version ..: AHK_L 1.1.13.01 x32/64 Unicode
 ; Author .......: Cyruz - http://ciroprincipe.info
-; ..............: Tray icons from Hawcons icon set: http://hawcons.com/. Thanks to Yannick Lung: http://www.yanlu.de/.
+; ..............: Entypo icon set, made by Daniel Bruce: http://danielbruce.se/.
 ; Changelog ....: Dic. 27, 2013 - v0.1   - First revision.
 ; ..............: Jan. 02, 2014 - v0.2   - Changed behaviour, keep monitoring Dropbox in the long run.
 ; ..............: Jul. 21, 2014 - v0.3   - Removed monitoring and management of the Dropbox process. Now using polling
